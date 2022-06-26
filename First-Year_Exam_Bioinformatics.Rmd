@@ -1,0 +1,34 @@
+---
+title: "First-Year Exam - Bioinformatics Part"
+author: "Abhishek Gupta - A59003338"
+date: '2022-06-25'
+output: html_document
+---
+
+## Import Libraries
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+```
+
+## Import CSV Data
+```{r}
+data <- read.csv('covid19_variants.csv')
+
+data$date <- as.Date(data$date) 
+```
+
+## Data Filtering 
+
+```{r}
+data <- data %>%
+  filter(data$variant_name !='Other' & data$variant_name != 'Total')
+```
+
+## Plot 
+```{r}
+ggplot(data=data, aes(x=date, y=percentage, color=variant_name)) +
+  geom_line() + ggtitle("COVID-19 Variants in California")
+```
