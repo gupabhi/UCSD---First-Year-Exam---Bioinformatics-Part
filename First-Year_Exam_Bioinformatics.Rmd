@@ -30,5 +30,6 @@ data <- data %>%
 ## Plot 
 ```{r}
 ggplot(data=data, aes(x=date, y=percentage, color=variant_name)) +
-  geom_line() + ggtitle("COVID-19 Variants in California")
+  geom_line() + ggtitle("COVID-19 Variants in California") +
+  xlab("Date") + ylab("Percentage of Sequenced Specimens")
 ```
